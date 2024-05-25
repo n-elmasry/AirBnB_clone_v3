@@ -3,7 +3,7 @@
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
-from flask import CORS
+from flask_cors import CORS
 from os import getenv
 
 
@@ -22,4 +22,6 @@ def teardown_appcontext(self):
 
 
 if __name__ == '__main__':
-    app.run(host=host_var, port=port_var, threaded=True)
+    host_var = getenv('HBNB_API_HOST', '0.0.0.0')
+    port_var = getenv('HBNB_API_PORT', '5000')
+    app.run(host=host_var, port=int(port_var), threaded=True)
