@@ -5,4 +5,5 @@ from flask import jsonify
 
 @app_views.route('/status', strict_slashes=False)
 def show_status():
+    """shows api status"""
     return jsonify({"status": "OK"})
