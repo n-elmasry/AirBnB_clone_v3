@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """flask app"""
-from flask import Flask
+from flask import Flask, jsonify
 from models import storage
 from api.v1.views import app_views
 from flask_cors import CORS
@@ -19,6 +19,11 @@ port_var = getenv('HBNB_API_PORT')
 def teardown_appcontext(self):
     """calls close"""
     storage.close()
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify(error='Not found'), 404
 
 
 if __name__ == '__main__':
