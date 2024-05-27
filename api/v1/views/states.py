@@ -43,7 +43,7 @@ def create_state():
     if not data:
         abort(400, description="Not a JSON")
     if 'name' not in data:
-        return jsonify(error='Missing name'), 400
+        abort(400, description="Missing name")
     new = State(**data)
     new.save()
 
