@@ -47,7 +47,6 @@ def create_amenity():
         return jsonify(error='Missing name'), 400
     new = Amenity(**data)
     new.save()
-
     return jsonify(new.to_dict()), 201
 
 

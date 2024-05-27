@@ -46,7 +46,6 @@ def create_state():
         abort(400, description="Missing name")
     new = State(**data)
     new.save()
-
     return jsonify(new.to_dict()), 201
 
 
