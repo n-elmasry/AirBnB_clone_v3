@@ -49,7 +49,7 @@ def create_city(state_id):
         abort(404)
     data = request.get_json()
     if not data:
-        return jsonify(error='Not a JSON'), 400
+        abort(400, description="Not a JSON")
     if 'name' not in data:
         return jsonify(error='Missing name'), 400
     new = City(state_id=state_id, **data)
@@ -66,7 +66,7 @@ def update_city(city_id):
         abort(404)
     data = request.get_json()
     if not data:
-        return jsonify(error='Not a JSON'), 400
+        abort(400, description="Not a JSON")
     for key, value in data.items():
         if key not in ['id', 'state_id', 'created_at', 'updated_at']:
             setattr(city, key, value)
