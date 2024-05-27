@@ -41,9 +41,9 @@ def create_state():
     """Creates a State"""
     data = request.get_json()
     if not data:
-        return jsonify(error='Not a JSON'), 400
+        abort(400, description="Not a JSON")
     if 'name' not in data:
-        return jsonify(error='Missing name'), 400
+        abort(400, description="Missing name")
     new = State(**data)
     new.save()
 
